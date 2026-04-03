@@ -1,0 +1,133 @@
+[한국어 번역본]
+원본 PDF의 줄바꿈과 일부 예시 코드는 텍스트 형태로 다듬어 정리했습니다.
+
+섹션 C - 스택과 큐
+[이 섹션에서 지정된 문제 1개를 답안으로 제출]
+
+안내:
+문제별 프로그램 템플릿은 APAS 시스템에 제공됩니다.
+함수를 구현할 때 반드시 해당 템플릿을 사용해야 합니다.
+
+1. (createQueueFromLinkedList)
+연결 리스트에 저장된 모든 정수를 순서대로 `enqueue`하여 연결 리스트 기반 큐를 생성하는 C 함수 `createQueueFromLinkedList()`를 작성하시오.
+연결 리스트의 첫 번째 노드를 먼저 큐에 넣고, 그다음 두 번째 노드, 그다음 세 번째 노드 순으로 넣어야 합니다.
+큐가 비어 있지 않다면, 시작 시 먼저 비워야 합니다.
+
+함수 원형:
+void createQueueFromLinkedList(LinkedList *ll, Queue *q);
+
+예:
+현재 연결 리스트가 `1, 2, 3, 4, 5`라면 결과 큐는 `1 2 3 4 5`가 됩니다.
+
+순회 힌트:
+ListNode *temp = ll->head;
+while (temp != NULL) {
+    // 필요한 작업 수행
+    temp = temp->next;
+}
+
+2. (createStackFromLinkedList)
+연결 리스트에 저장된 모든 정수를 순서대로 `push`하여 연결 리스트 기반 스택을 생성하는 C 함수 `createStackFromLinkedList()`를 작성하시오.
+연결 리스트의 첫 번째 노드를 먼저 스택에 넣고, 그다음 두 번째 노드, 그다음 세 번째 노드 순으로 넣어야 합니다.
+스택이 비어 있지 않다면, 시작 시 먼저 비워야 합니다.
+
+함수 원형:
+void createStackFromLinkedList(LinkedList *ll, Stack *stack);
+
+예:
+현재 연결 리스트가 `1, 3, 5, 6, 7`이라면 결과 스택은 `7 6 5 3 1`이 됩니다.
+
+3. (isStackPairwiseConsecutive)
+스택 안의 숫자들이 두 개씩 짝지었을 때 연속된 수인지 검사하는 C 함수 `isStackPairwiseConsecutive()`를 작성하시오.
+정수를 스택에 넣거나 뺄 때는 `push()`와 `pop()`만 사용해야 합니다.
+
+함수 원형:
+int isStackPairwiseConsecutive(Stack *s);
+
+판정 규칙:
+- 스택 크기가 홀수면 0을 반환합니다.
+- 각 쌍의 차이가 1이면 통과합니다.
+- 하나라도 조건을 만족하지 않으면 0을 반환합니다.
+- 모든 쌍이 조건을 만족하면 1을 반환합니다.
+
+예:
+스택이 `(16, 15, 11, 10, 5, 4)`이면 pairwise consecutive 입니다.
+스택이 `(16, 15, 11, 10, 5, 1)`이면 pairwise consecutive 이 아닙니다.
+스택이 `(16, 15, 11, 10, 5)`이면 원소 수가 홀수이므로 조건을 만족하지 않습니다.
+
+4. (reverseQueue)
+스택을 사용하여 큐를 뒤집는 C 함수 `reverseQueue()`를 작성하시오.
+스택에는 `push()`와 `pop()`만 사용하고, 큐에는 `enqueue()`와 `dequeue()`만 사용해야 합니다.
+스택이 비어 있지 않다면, 시작 시 먼저 비워야 하며 스택 초기화도 고려해야 합니다.
+
+함수 원형:
+void reverseQueue(Queue *q);
+
+예:
+큐가 `(1, 2, 3, 4, 5)`이면 결과 큐는 `(5, 4, 3, 2, 1)`이 됩니다.
+
+5. (recursiveReverseQueue)
+정수 큐에 저장된 원소 순서를 재귀적으로 뒤집는 C 함수 `recursiveReverseQueue()`를 작성하시오.
+
+함수 원형:
+void recursiveReverseQueue(Queue *q);
+
+예시 아이디어:
+int temp;
+if (q->ll.head == NULL) return;
+temp = dequeue(q);
+recursiveReverseQueue(q);
+enqueue(q, temp);
+
+예:
+큐가 `(1, 2, 3, 4, 5)`이면 결과 큐는 `(5, 4, 3, 2, 1)`이 됩니다.
+
+6. (removeUntilStack)
+정수 스택에서 지정한 값이 처음 나타날 때까지 값을 모두 pop하는 C 함수 `removeUntilStack()`를 작성하시오.
+반복문은 조건을 만족하면 중간에 종료할 수 있습니다.
+빈 스택(`s->ll.size == 0`)도 반드시 고려해야 합니다.
+
+함수 원형:
+void removeUntilStack(Stack *s, int value);
+
+예:
+맨 위가 왼쪽에 보이는 스택 `(1, 2, 3, 4, 5, 6, 7)`에 대해 `value = 4`로 호출하면 결과 스택은 `(4, 5, 6, 7)`입니다.
+맨 위가 왼쪽에 보이는 스택 `(10, 20, 15, 25, 5)`에 대해 `value = 15`로 호출하면 결과 스택은 `(15, 25, 5)`입니다.
+
+7. (balanced)
+문자 `()[]{}` 로만 이루어진 수식이 균형 잡혀 있는지 판별하는 C 함수 `balanced()`를 작성하시오.
+
+함수 원형:
+int balanced(char *expression);
+
+예:
+다음 식들은 괄호의 순서와 개수가 올바르므로 balanced 입니다.
+()
+([])
+{[]()[]}
+
+다음 식들은 balanced 가 아닙니다.
+{{)]
+[({{)])
+
+풀이 힌트:
+- 여는 괄호 `{ [ (` 는 스택에 push 합니다.
+- 닫는 괄호 `} ] )` 를 만나면 스택 top 과 짝이 맞는지 확인한 뒤 pop 합니다.
+- 마지막에 스택이 비어 있으면 balanced 입니다.
+
+샘플 입출력:
+1: 문자열 입력
+2: `()[]{}` 로 이루어진 식이 balanced 인지 확인
+0: 종료
+
+예시:
+Please input your choice(1/0): 1
+Enter expressions without spaces to check whether it is balanced or not: {[]()[]}
+{[]()[]}
+balanced!
+
+예시:
+Please input your choice(1/0): 1
+Enter expressions without spaces to check whether it is balanced or not: [({{)])
+[({{)])
+not balanced!

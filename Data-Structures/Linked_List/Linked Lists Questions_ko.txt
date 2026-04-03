@@ -1,0 +1,167 @@
+[한국어 번역본]
+원본 PDF의 줄바꿈, 메뉴 문구, 예시 배치는 읽기 쉽게 다시 정리했습니다.
+
+섹션 A - 연결 리스트
+[이 섹션에서 지정된 문제 1개를 답안으로 제출]
+
+안내:
+문제별 프로그램 템플릿은 APAS 시스템에 제공됩니다.
+함수를 구현할 때 반드시 해당 템플릿을 사용해야 합니다.
+
+1. (insertSortedLL)
+사용자로부터 정수를 입력받아 오름차순 연결 리스트에 삽입하는 C 함수 `insertSortedLL()`를 작성하시오.
+이미 현재 연결 리스트에 존재하는 값은 삽입하면 안 됩니다.
+새 항목이 삽입된 인덱스를 반환해야 하며, 삽입에 실패하면 `-1`을 반환해야 합니다.
+현재 연결 리스트는 이미 정렬되어 있거나 비어 있다고 가정해도 됩니다.
+
+함수 원형:
+int insertSortedLL(LinkedList *ll, int item);
+
+예:
+현재 연결 리스트가 `2, 3, 5, 7, 9`일 때 `8`을 삽입하면 결과는 `2, 3, 5, 7, 8, 9`이며 반환값은 `4`입니다.
+현재 연결 리스트가 `5, 7, 9, 11, 15`일 때 `7`을 삽입하면 중복이므로 삽입되지 않으며 반환값은 `-1`입니다.
+
+샘플 메뉴:
+1: 정렬된 연결 리스트에 정수 삽입
+2: 가장 최근 입력값이 삽입된 인덱스 출력
+3: 정렬된 연결 리스트 출력
+0: 종료
+
+샘플 진행:
+입력 2 -> 결과 리스트: 2
+입력 3 -> 결과 리스트: 2 3
+입력 5 -> 결과 리스트: 2 3 5
+입력 7 -> 결과 리스트: 2 3 5 7
+입력 9 -> 결과 리스트: 2 3 5 7 9
+입력 8 -> 결과 리스트: 2 3 5 7 8 9
+인덱스 출력 -> The value 8 was added at index 4
+다시 5 입력 -> 중복이므로 리스트 변화 없음
+인덱스 출력 -> The value 5 was added at index -1
+입력 11 -> 결과 리스트: 2 3 5 7 8 9 11
+인덱스 출력 -> The value 11 was added at index 6
+
+2. (alternateMergeLL)
+두 번째 연결 리스트의 노드들을 첫 번째 연결 리스트의 교대 위치(alternate positions)에 삽입하는 C 함수 `alternateMergeLL()`를 작성하시오.
+첫 번째 리스트에 교대 위치가 남아 있을 때만 두 번째 리스트의 노드를 삽입합니다.
+
+함수 원형:
+void alternateMergeLL(LinkedList *ll1, LinkedList *ll2);
+
+예 1:
+LinkedList1: 1, 2, 3
+LinkedList2: 4, 5, 6, 7
+결과:
+LinkedList1: 1, 4, 2, 5, 3, 6
+LinkedList2: 7
+
+예 2:
+LinkedList1: 1, 5, 7, 3, 9, 11
+LinkedList2: 6, 10, 2, 4
+결과:
+LinkedList1: 1, 6, 5, 10, 7, 2, 3, 4, 9, 11
+LinkedList2: empty
+
+3. (moveOddItemsToBackLL)
+연결 리스트의 모든 홀수를 뒤쪽으로 이동시키는 C 함수 `moveOddItemsToBackLL()`를 작성하시오.
+
+함수 원형:
+void moveOddItemsToBackLL(LinkedList *ll);
+
+예:
+`2, 3, 4, 7, 15, 18` -> `2 4 18 3 7 15`
+`2, 7, 18, 3, 4, 15` -> `2 18 4 7 3 15`
+`1, 3, 5` -> `1 3 5`
+`2, 4, 6` -> `2 4 6`
+
+4. (moveEvenItemsToBackLL)
+연결 리스트의 모든 짝수를 뒤쪽으로 이동시키는 C 함수 `moveEvenItemsToBackLL()`를 작성하시오.
+
+함수 원형:
+void moveEvenItemsToBackLL(LinkedList *ll);
+
+예:
+`2, 3, 4, 7, 15, 18` -> `3 7 15 2 4 18`
+`2, 7, 18, 3, 4, 15` -> `7 3 15 2 18 4`
+`1, 3, 5` -> `1 3 5`
+`2, 4, 6` -> `2 4 6`
+
+5. (frontBackSplitLL)
+단일 연결 리스트를 앞 절반(front half)과 뒤 절반(back half) 두 개의 부분 리스트로 나누는 C 함수 `frontBackSplitLL()`를 작성하시오.
+원소 수가 홀수라면 하나 더 많은 원소는 앞 리스트에 들어가야 합니다.
+함수는 `frontList`와 `backList`를 출력합니다.
+
+함수 원형:
+void frontBackSplitLL(LinkedList *ll, LinkedList *resultFrontList, LinkedList *resultBackList);
+
+예:
+주어진 연결 리스트가 `2, 3, 5, 6, 7`이면 결과는 다음과 같습니다.
+frontList: 2, 3, 5
+backList: 6, 7
+
+샘플 메뉴:
+1: 연결 리스트에 정수 삽입
+2: 연결 리스트 출력
+3: frontList 와 backList 로 분할
+0: 종료
+
+샘플 진행:
+2 입력 -> 2
+3 입력 -> 2 3
+5 입력 -> 2 3 5
+6 입력 -> 2 3 5 6
+7 입력 -> 2 3 5 6 7
+분할 결과:
+Front linked list: 2 3 5
+Back linked list: 6 7
+
+6. (moveMaxToFront)
+연결 리스트를 최대 한 번만 순회하여 가장 큰 값을 가진 노드를 맨 앞으로 이동시키는 C 함수 `moveMaxToFront()`를 작성하시오.
+
+함수 원형:
+int moveMaxToFront(ListNode **ptrHead);
+
+예:
+연결 리스트가 `(30, 20, 40, 70, 50)`이면 결과는 `(70, 30, 20, 40, 50)`입니다.
+
+샘플 메뉴:
+1: 연결 리스트에 정수 삽입
+2: 가장 큰 값을 가진 노드를 맨 앞으로 이동
+0: 종료
+
+샘플 진행:
+30 입력 -> 30
+20 입력 -> 30 20
+40 입력 -> 30 20 40
+70 입력 -> 30 20 40 70
+50 입력 -> 30 20 40 70 50
+실행 결과 -> 70 30 20 40 50
+
+7. (recursiveReverse)
+`next` 포인터와 `head` 포인터를 변경하여 연결 리스트를 재귀적으로 뒤집는 C 함수 `recursiveReverse()`를 작성하시오.
+
+함수 원형:
+void recursiveReverse(ListNode **ptrHead);
+
+예:
+연결 리스트가 `(1, 2, 3, 4, 5)`이면 결과는 `(5, 4, 3, 2, 1)`입니다.
+
+샘플 메뉴:
+1: 연결 리스트에 정수 삽입
+2: 연결 리스트 뒤집기
+0: 종료
+
+재귀 아이디어:
+ListNode *first, *rest;
+NULL 이면 return;
+recursiveReverse(&rest);
+first->next->next = first;
+first->next = NULL;
+*ptrHead = rest;
+
+샘플 진행:
+1 입력 -> 1
+2 입력 -> 1 2
+3 입력 -> 1 2 3
+4 입력 -> 1 2 3 4
+5 입력 -> 1 2 3 4 5
+뒤집기 실행 결과 -> 5 4 3 2 1
