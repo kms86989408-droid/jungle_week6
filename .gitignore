@@ -1,2 +1,7 @@
 tools/
 .DS_Store
+q*_test
+Data-Structures/Linked_List/Q[0-9]_A_LL
+Data-Structures/Stack_and_Queue/Q[0-9]_C_SQ
+Data-Structures/Binary_Tree/Q[0-9]_E_BT
+Data-Structures/Binary_Search_Tree/Q[0-9]_F_BST

@@ -114,6 +114,10 @@ int main()
 void recursiveReverse(Queue *q)
 {
 /* add your code here (여기에 코드를 작성하세요) */
+if(isEmptyQueue(q) != 0) return;
+int item = dequeue(q);
+recursiveReverse(q);
+enqueue(q, item);
 }
 
 //////////////////////////////////////////////////////////////////
