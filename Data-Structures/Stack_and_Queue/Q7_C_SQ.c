@@ -109,6 +109,32 @@ int main()
 int balanced(char *expression)
 {
 /* add your code here (여기에 코드를 작성하세요) */
+Stack s;
+s.ll.head = NULL;
+s.ll.size = 0;
+
+int i = 0;
+while (expression[i] != '\0'){
+	char ch = expression[i];
+
+	if (ch == '(' || ch == '[' || ch =='{'){
+		push(&s, ch);
+	} 
+	else{
+		if (isEmptyStack(&s)) return 1;
+		if ((ch == ')' && peek(&s) != '(') ||
+			(ch ==']' && peek(&s) != '[')||
+			(ch == '}' && peek(&s) != '{'))
+			return 1;
+		else
+		pop(&s);
+	}
+	i++;	
+}
+if (isEmptyStack(&s))
+return 0;
+else
+return 1;
 }
 
 ////////////////////////////////////////////////////////////
