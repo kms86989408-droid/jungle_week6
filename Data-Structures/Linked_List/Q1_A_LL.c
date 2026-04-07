@@ -95,6 +95,16 @@ int main()
 int insertSortedLL(LinkedList *ll, int item)
 {
 	/* add your code here (여기에 코드를 작성하세요) */
+	ListNode *cur;
+	int index; 
+	cur = ll -> head;
+	index = 0; 
+	while(cur != NULL && cur -> item < item){
+		cur = cur -> next;
+		index ++;
+	}
+	insertNode(ll, index, item);
+	return index; 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
