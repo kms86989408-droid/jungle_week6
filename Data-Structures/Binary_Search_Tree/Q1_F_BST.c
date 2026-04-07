@@ -97,8 +97,30 @@ int main()
 
 void levelOrderTraversal(BSTNode* root)
 {
-
     /* add your code here (여기에 코드를 작성하세요) */
+	Queue q;  // queue 선언
+	q.head = NULL;    // 값 초기화
+	q.tail = NULL;     // 값 초기화
+	if (root == NULL){  // 트리 비어있을때 종료
+		return; }
+	// 루트 노드를 줄 맨 뒤에 배치함
+	enqueue(&q.head, &q.tail, root);
+
+    // 줄이 빌 때 까지 반복
+    while (!isEmpty(q.head)) {
+        // 줄 맨 앞값을 꺼내서 cur에 저장
+        BSTNode *cur = dequeue(&q.head, &q.tail);
+        // 꺼낸 노드의 숫자를 출력
+        printf("%d", cur -> item);
+        // 꺼낸 노드의 왼쪽 자식이 있다면 줄 뒤에 배치
+        if(cur -> left != NULL){
+			enqueue(&q.head, &q.tail, cur -> left);
+		}
+        // 꺼낸 노드의 오른쪽 자식이 있다면 줄 뒤에 배치
+		if(cur -> right != NULL){
+			enqueue(&q.head, &q.tail, cur -> right);
+		}
+}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
