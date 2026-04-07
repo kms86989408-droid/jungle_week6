@@ -88,9 +88,38 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-void moveOddItemsToBack(LinkedList *ll)
-{
-	/* add your code here (여기에 코드를 작성하세요) */
+void moveOddItemsToBack(LinkedList *ll){
+ListNode *cur = ll->head;
+    ListNode *prev = NULL;
+    
+    // last를 진짜 마지막 노드로 초기화
+    ListNode *last = ll->head;
+    while (last->next != NULL)
+        last = last->next;
+    ListNode *end = last;
+
+    int n = ll->size;
+	for (int i = 0; i < n; i++) { 
+        if (cur->item % 2 != 0) {
+            ListNode *next = cur->next;  // 미리 저장
+            
+            // (A) cur을 떼어내기
+            if (prev == NULL)
+                ll -> head = next;          // head인 경우
+            else
+                prev -> next = next;          // 중간 노드인 경우
+            
+            // (B) last 뒤에 붙이기
+            last -> next = cur;              // last->next = ?
+            cur -> next =NULL;              // cur->next = ?
+            last = cur;
+            
+            cur = next;
+        } else {
+            prev = cur;
+            cur = cur->next;
+        }
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
