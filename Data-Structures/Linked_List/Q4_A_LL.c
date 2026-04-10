@@ -91,7 +91,45 @@ int main()
 void moveEvenItemsToBack(LinkedList *ll)
 {
 	/* add your code here (여기에 코드를 작성하세요) */
-}
+	ListNode *cur, *next;
+	ListNode *oddHead = NULL,  *oddTail = NULL;
+	ListNode *evenHead = NULL, *evenTail = NULL;
+
+	if (ll == NULL || ll -> head == NULL || ll -> head -> next == NULL)
+	return; 
+
+	cur = ll -> head;
+
+	while(cur != NULL){
+		next = cur -> next;
+		cur -> next = NULL;
+
+		if(cur -> item % 2 == 0){
+			if(evenHead == NULL){
+				evenHead = cur;
+				evenTail = cur;
+			}else{
+				evenTail -> next = cur;
+				evenTail = cur;
+			}
+				}else{
+				if(oddHead == NULL){
+					oddHead = cur;
+					oddTail = cur;
+			}
+			else{
+				oddTail -> next = cur;
+				oddTail = cur;
+			}
+		}
+		cur = next;
+	}
+	if(oddHead == NULL){
+		ll -> head = evenHead;
+	}else{
+		ll->head = oddHead;
+		oddTail -> next = evenHead
+	}
 
 ///////////////////////////////////////////////////////////////////////////////////
 
